@@ -87,3 +87,20 @@ TEST_F(ElementHelpersTests, testGetOperationString) {
   EXPECT_EQ(expected4, actual4);
   EXPECT_EQ(expected5, actual5);
 }
+
+TEST_F(ElementHelpersTests, testPerformOperation) {
+  int a = 10;
+  int b = 2;
+
+  int expectedPlus     = 12;
+  int expectedMinus    = 8;
+  int expectedMultiply = 20;
+  int expectedDivide   = 5;
+  int expectedNumber   = 0;
+
+  EXPECT_EQ(expectedPlus,     performOperation(a, PLUS, b));
+  EXPECT_EQ(expectedMinus,    performOperation(a, MINUS, b));
+  EXPECT_EQ(expectedMultiply, performOperation(a, MULTIPLY, b));
+  EXPECT_EQ(expectedDivide,   performOperation(a, DIVIDE, b));
+  EXPECT_EQ(expectedNumber,   performOperation(a, NUMBER, b));
+}

@@ -18,4 +18,9 @@ bool operator!=(const Element& a,
 // get string representation of the given operation
 std::string getOperationString(const Operation operation);
 
+// gets the result of the given operation on the given values
+int         performOperation(const int       a,
+                             const Operation operation,
+                             const int       b);
+
 #endif // ifndef ELEMENTHELPERS_H

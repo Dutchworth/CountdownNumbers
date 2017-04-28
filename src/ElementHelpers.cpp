@@ -36,3 +36,23 @@ std::string getOperationString(const Operation operation) {
     return std::string("");
   }
 }
+
+// gets the result of the given operation on the given values
+int performOperation(const int a, const Operation operation, const int b) {
+  switch (operation) {
+  case PLUS:
+    return a + b;
+
+  case MINUS:
+    return a - b;
+
+  case MULTIPLY:
+    return a * b;
+
+  case DIVIDE:
+    return a / b;
+
+  default:
+    return 0;
+  }
+}
