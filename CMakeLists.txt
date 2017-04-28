@@ -33,4 +33,10 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
   include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-add_executable(CountdownNumbers src/main.cpp)
+add_definitions(-std=c++11)
+
+add_subdirectory(src)
+add_subdirectory(test)
+
+add_executable(CountdownNumbers ${SourceSubdir_SOURCE_DIR}/main.cpp)
+target_link_libraries(CountdownNumbers sourceLib)
