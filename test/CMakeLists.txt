@@ -5,6 +5,7 @@ project(TestSubdir)
 set(TEST_SOURCES
   RunAllTests.cpp
   ElementTests.cpp
+  ElementHelpersTests.cpp
 )
 
 include_directories(${SourceSubdir_SOURCE_DIR})

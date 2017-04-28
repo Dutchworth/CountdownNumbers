@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "Element.h"
 #include "ElementHelpers.h"
+#include <string>
 
 class ElementTests : public ::testing::Test {
 protected:
