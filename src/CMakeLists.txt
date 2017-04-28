@@ -6,6 +6,7 @@ set (MAIN_SOURCES
   Element.cpp
   ElementHelpers.cpp
   RpnUtils.cpp
+  StatsUtils.cpp
 )
 
 add_library(sourceLib ${MAIN_SOURCES})
