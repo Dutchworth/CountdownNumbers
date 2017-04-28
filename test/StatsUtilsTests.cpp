@@ -28,10 +28,9 @@ protected:
 
 TEST_F(StatsUtilsTests, testFactorial) {
   for (unsigned long long i = 0; i <= 6; ++i) {
-    unsigned long long expected = std::tgamma(i + 1) + 0.5; // extra 0.5 to
-                                                            // force proper
-                                                            // rounding
-    unsigned long long actual = StatsUtils::factorial(i);
+    // extra 0.5 to force proper rounding
+    long long expected = std::tgamma(i + 1) + 0.5;
+    long long actual   = StatsUtils::factorial(i);
     EXPECT_EQ(expected, actual);
   }
 
