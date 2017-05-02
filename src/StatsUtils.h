@@ -13,6 +13,10 @@ std::vector<std::vector<T> >getCombinations(std::vector<T>set,
                                             int           subSetSize);
 
 template<typename T>
+std::vector<std::vector<T> >getCombinationsWithRep(std::vector<T>set,
+                                                   int           subSetSize);
+
+template<typename T>
 std::vector<std::vector<T> >getPermuations(std::vector<T>set);
 }
 

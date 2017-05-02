@@ -1,52 +1,19 @@
 #include "gtest/gtest.h"
 #include "StatsUtils.h"
+#include "StatsUtilsTestsValues.h"
 #include <cmath>
 
 class StatsUtilsTests : public ::testing::Test {
 protected:
 
-  std::vector<int>nums4 { { 1, 2, 3, 4 } };
+  std::vector<int>nums4 = testValues::nums4;
 
-  std::vector<std::vector<int> >combs4to1 { { 1 },
-                                            { 2 },
-                                            { 3 },
-                                            { 4 } };
-  std::vector<std::vector<int> >combs4to2 { { 1, 2 },
-                                            { 1, 3 },
-                                            { 1, 4 },
-                                            { 2, 3 },
-                                            { 2, 4 },
-                                            { 3, 4 } };
-  std::vector<std::vector<int> >combs4to3 { { 1, 2, 3 },
-                                            { 1, 2, 4 },
-                                            { 1, 3, 4 },
-                                            { 2, 3, 4 } };
-  std::vector<std::vector<int> >combs4to4 { { 1, 2, 3, 4 } };
+  std::vector<std::vector<int> >combs4to1 = testValues::combs4to1;
+  std::vector<std::vector<int> >combs4to2 = testValues::combs4to2;
+  std::vector<std::vector<int> >combs4to3 = testValues::combs4to3;
+  std::vector<std::vector<int> >combs4to4 = testValues::combs4to4;
 
-  std::vector<std::vector<int> >perms { { 1, 2, 3, 4 },
-                                        { 1, 2, 4, 3 },
-                                        { 1, 3, 2, 4 },
-                                        { 1, 3, 4, 2 },
-                                        { 1, 4, 2, 3 },
-                                        { 1, 4, 3, 2 },
-                                        { 2, 1, 3, 4 },
-                                        { 2, 1, 4, 3 },
-                                        { 2, 3, 1, 4 },
-                                        { 2, 3, 4, 1 },
-                                        { 2, 4, 1, 3 },
-                                        { 2, 4, 3, 1 },
-                                        { 3, 1, 2, 4 },
-                                        { 3, 1, 4, 2 },
-                                        { 3, 2, 1, 4 },
-                                        { 3, 2, 4, 1 },
-                                        { 3, 4, 1, 2 },
-                                        { 3, 4, 2, 1 },
-                                        { 4, 1, 2, 3 },
-                                        { 4, 1, 3, 2 },
-                                        { 4, 2, 1, 3 },
-                                        { 4, 2, 3, 1 },
-                                        { 4, 3, 1, 2 },
-                                        { 4, 3, 2, 1 } };
+  std::vector<std::vector<int> >perms = testValues::perms;
 
   virtual void SetUp()    {}
 

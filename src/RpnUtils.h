@@ -10,6 +10,9 @@ namespace RpnUtils {
 // converts the given stack to a vector for easier print and manipulation
 std::vector<Element>convertToVect(std::stack<Element>stack);
 
+// converts the given vector to a stack
+std::stack<Element> convertToStack(std::vector<Element>vect);
+
 // returns the evaluated value of the given stack of emelents int rpn format
 int                 evaluateStackRecursive(std::stack<Element>& stack);
 

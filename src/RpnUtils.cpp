@@ -20,6 +20,16 @@ std::vector<Element>RpnUtils::convertToVect(std::stack<Element>stack) {
   return vect;
 }
 
+std::stack<Element>RpnUtils::convertToStack(std::vector<Element>vect) {
+  std::stack<Element> stack;
+
+  for (auto each : vect) {
+    stack.push(each);
+  }
+
+  return stack;
+}
+
 int RpnUtils::evaluateStackRecursive(std::stack<Element>& stack) {
   Element top = stack.top();
 

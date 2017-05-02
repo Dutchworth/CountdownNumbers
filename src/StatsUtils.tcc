@@ -1,6 +1,7 @@
 #ifndef STATSUTILS_TCC
 #define STATSUTILS_TCC
 
+#include <vector>
 #include <algorithm>
 
 namespace StatsUtils {
@@ -19,11 +20,32 @@ std::vector<std::vector<T> >getCombinations(std::vector<T>set,
     auto setCopy = set;
 
     for (int i = 0; i < set.size(); ++i) {
-      T item = set.at(i);
+      auto item = set.at(i);
 
       setCopy.erase(setCopy.begin());
 
       for (auto subCombo : getCombinations(setCopy, subSetSize - 1)) {
+        subCombo.insert(subCombo.begin(), item);
+        vect2d.push_back(subCombo);
+      }
+    }
+  }
+
+  return vect2d;
+}
+
+template<typename T>
+std::vector<std::vector<T> >getCombinationsWithRep(std::vector<T>set,
+                                                   int           subSetSize) {
+  std::vector<std::vector<T> > vect2d;
+
+  if (subSetSize <= 1) {
+    for (auto each : set) {
+      vect2d.push_back(std::vector<T>{ { each } });
+    }
+  } else {
+    for (auto item : set) {
+      for (auto subCombo : getCombinationsWithRep(set, subSetSize - 1)) {
         subCombo.insert(subCombo.begin(), item);
         vect2d.push_back(subCombo);
       }
@@ -45,7 +67,7 @@ std::vector<std::vector<T> >getPermuations(std::vector<T>set) {
     }
   } else {
     for (int i = 0; i < set.size(); ++i) {
-      T item = set.at(i);
+      auto item = set.at(i);
 
       auto setCopy = set;
       setCopy.erase(setCopy.begin() + i);
