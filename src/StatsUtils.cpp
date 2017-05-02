@@ -37,3 +37,29 @@ std::vector<std::vector<int> >StatsUtils::getCombinations(std::vector<int>set,
 
   return vect2d;
 }
+
+std::vector<std::vector<int> >StatsUtils::getPermuations(std::vector<int>set) {
+  std::sort(set.begin(), set.end());
+
+  std::vector<std::vector<int> > vect2d;
+
+  if (set.size() <= 1) {
+    for (auto each : set) {
+      vect2d.push_back(std::vector<int>{ { each } });
+    }
+  } else {
+    for (int i = 0; i < set.size(); ++i) {
+      int item = set.at(i);
+
+      auto setCopy = set;
+      setCopy.erase(setCopy.begin() + i);
+
+      for (auto subPerm : getPermuations(setCopy)) {
+        subPerm.insert(subPerm.begin(), item);
+        vect2d.push_back(subPerm);
+      }
+    }
+  }
+
+  return vect2d;
+}
