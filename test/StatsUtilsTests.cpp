@@ -48,7 +48,7 @@ protected:
                                         { 4, 3, 1, 2 },
                                         { 4, 3, 2, 1 } };
 
-  virtual void SetUp() {}
+  virtual void SetUp()    {}
 
   virtual void TearDown() {}
 };
@@ -66,20 +66,25 @@ TEST_F(StatsUtilsTests, testFactorial) {
 }
 
 TEST_F(StatsUtilsTests, testGetCombinations) {
-  std::vector<std::vector<int> > new4C1 = StatsUtils::getCombinations(nums4, 1);
+  std::vector<std::vector<int> > new4C1 = StatsUtils::getCombinations<int>(nums4,
+                                                                           1);
   EXPECT_EQ(combs4to1, new4C1);
 
-  std::vector<std::vector<int> > new4C2 = StatsUtils::getCombinations(nums4, 2);
+  std::vector<std::vector<int> > new4C2 = StatsUtils::getCombinations<int>(nums4,
+                                                                           2);
   EXPECT_EQ(combs4to2, new4C2);
 
-  std::vector<std::vector<int> > new4C3 = StatsUtils::getCombinations(nums4, 3);
+  std::vector<std::vector<int> > new4C3 = StatsUtils::getCombinations<int>(nums4,
+                                                                           3);
   EXPECT_EQ(combs4to3, new4C3);
 
-  std::vector<std::vector<int> > new4C4 = StatsUtils::getCombinations(nums4, 4);
+  std::vector<std::vector<int> > new4C4 = StatsUtils::getCombinations<int>(nums4,
+                                                                           4);
   EXPECT_EQ(combs4to4, new4C4);
 }
 
 TEST_F(StatsUtilsTests, tetsGetPermutations) {
-  std::vector<std::vector<int> > newPerms = StatsUtils::getPermuations(nums4);
+  std::vector<std::vector<int> > newPerms =
+    StatsUtils::getPermuations<int>(nums4);
   EXPECT_EQ(perms, newPerms);
 }

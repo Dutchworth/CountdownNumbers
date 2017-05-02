@@ -6,12 +6,16 @@
 
 namespace StatsUtils {
 // factorial of given (posistive integer)
-long long                     factorial(long long value);
+long long                   factorial(long long value);
 
-std::vector<std::vector<int> >getCombinations(std::vector<int>set,
-                                              int             subSetSize);
+template<typename T>
+std::vector<std::vector<T> >getCombinations(std::vector<T>set,
+                                            int           subSetSize);
 
-std::vector<std::vector<int> >getPermuations(std::vector<int>set);
+template<typename T>
+std::vector<std::vector<T> >getPermuations(std::vector<T>set);
 }
+
+#include "StatsUtils.tcc"
 
 #endif // ifndef STATSUTILS_H
