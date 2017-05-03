@@ -40,3 +40,6 @@ add_subdirectory(test)
 
 add_executable(CountdownNumbers ${SourceSubdir_SOURCE_DIR}/main.cpp)
 target_link_libraries(CountdownNumbers sourceLib)
+
+enable_testing()
+add_test(NAME unitTests COMMAND runUnitTests)
