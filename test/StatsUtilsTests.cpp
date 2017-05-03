@@ -2,6 +2,7 @@
 #include "StatsUtils.h"
 #include "StatsUtilsTestsValues.h"
 #include <cmath>
+#include <iostream>
 
 class StatsUtilsTests : public ::testing::Test {
 protected:
@@ -15,9 +16,18 @@ protected:
 
   std::vector<std::vector<int> >perms = testValues::perms;
 
-  virtual void SetUp()    {}
+  std::vector<std::vector<int> >combsReps4to1 = testValues::combsReps4to1;
+  std::vector<std::vector<int> >combsReps4to2 = testValues::combsReps4to2;
+  std::vector<std::vector<int> >combsReps4to3 = testValues::combsReps4to3;
+  std::vector<std::vector<int> >combsReps4to4 = testValues::combsReps4to4;
 
-  virtual void TearDown() {}
+  virtual void SetUp()    {
+    // do nothing, values already setup
+  }
+
+  virtual void TearDown() {
+    // do nothing, values will be destroyed be class destructor
+  }
 };
 
 TEST_F(StatsUtilsTests, testFactorial) {
@@ -54,4 +64,26 @@ TEST_F(StatsUtilsTests, tetsGetPermutations) {
   std::vector<std::vector<int> > newPerms =
     StatsUtils::getPermuations<int>(nums4);
   EXPECT_EQ(perms, newPerms);
+}
+
+TEST_F(StatsUtilsTests, testGetCombinationsWithRepetion) {
+  std::vector<std::vector<int> > new4C1 = StatsUtils::getCombinationsWithRep(
+    nums4,
+    1);
+  EXPECT_EQ(combsReps4to1, new4C1);
+
+  std::vector<std::vector<int> > new4C2 = StatsUtils::getCombinationsWithRep(
+    nums4,
+    2);
+  EXPECT_EQ(combsReps4to2, new4C2);
+
+  std::vector<std::vector<int> > new4C3 = StatsUtils::getCombinationsWithRep(
+    nums4,
+    3);
+  EXPECT_EQ(combsReps4to3, new4C3);
+
+  std::vector<std::vector<int> > new4C4 = StatsUtils::getCombinationsWithRep(
+    nums4,
+    4);
+  EXPECT_EQ(combsReps4to4, new4C4);
 }

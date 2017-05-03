@@ -2,6 +2,7 @@
 #define STATSUTILS_TCC
 
 #include <vector>
+#include <set>
 #include <algorithm>
 
 namespace StatsUtils {
@@ -37,20 +38,23 @@ std::vector<std::vector<T> >getCombinations(std::vector<T>set,
 template<typename T>
 std::vector<std::vector<T> >getCombinationsWithRep(std::vector<T>set,
                                                    int           subSetSize) {
-  std::vector<std::vector<T> > vect2d;
+  std::set<std::vector<T> > set2d;
 
   if (subSetSize <= 1) {
     for (auto each : set) {
-      vect2d.push_back(std::vector<T>{ { each } });
+      set2d.insert(std::vector<T>{ { each } });
     }
   } else {
     for (auto item : set) {
       for (auto subCombo : getCombinationsWithRep(set, subSetSize - 1)) {
         subCombo.insert(subCombo.begin(), item);
-        vect2d.push_back(subCombo);
+        std::sort(subCombo.begin(), subCombo.end());
+        set2d.insert(subCombo);
       }
     }
   }
+
+  std::vector<std::vector<T> > vect2d(set2d.begin(), set2d.end());
 
   return vect2d;
 }
