@@ -4,6 +4,7 @@
 #include "Element.h"
 #include <string>
 #include <ostream>
+#include <vector>
 
 // print operator
 std::ostream & operator<<(std::ostream & os,
@@ -30,5 +31,12 @@ std::string getOperationString(const Operation operation);
 int         performOperation(const int       a,
                              const Operation operation,
                              const int       b);
+
+// convert a vector of integers to Element with those
+std::vector<Element>              convertToElement(std::vector<int>input);
+
+// convert a 2d vector of integers to Element with those values
+std::vector<std::vector<Element> >convertToElement(
+  std::vector<std::vector<int> >input);
 
 #endif // ifndef ELEMENTHELPERS_H

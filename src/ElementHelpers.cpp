@@ -1,6 +1,7 @@
 #include "ElementHelpers.h"
 #include <string>
 #include <ostream>
+#include <vector>
 
 // print operator
 std::ostream & operator<<(std::ostream& os, const Element& element) {
@@ -78,4 +79,33 @@ int performOperation(const int a, const Operation operation, const int b) {
   default:
     return 0;
   }
+}
+
+// convert a vector of integers to Element with those values
+std::vector<Element>convertToElement(std::vector<int>input) {
+  std::vector<Element> toReturn;
+
+  for (auto item : input) {
+    toReturn.push_back(Element(item));
+  }
+
+  return toReturn;
+}
+
+// convert a 2d vector of integers to Element with those values
+std::vector<std::vector<Element> >convertToElement(
+  std::vector<std::vector<int> >input) {
+  std::vector<std::vector<Element> > toReturn;
+
+  for (auto each : input) {
+    std::vector<Element> newEach;
+
+    for (auto item : each) {
+      newEach.push_back(Element(item));
+    }
+
+    toReturn.push_back(newEach);
+  }
+
+  return toReturn;
 }

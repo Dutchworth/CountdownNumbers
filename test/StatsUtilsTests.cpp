@@ -2,40 +2,10 @@
 #include "StatsUtilsTestsValues.h"
 #include "StatsUtils.h"
 #include "Element.h"
+#include "ElementHelpers.h"
 #include <cmath>
 
 class StatsUtilsTests : public ::testing::Test {
-private:
-
-  // convert a vector of integers to Element with those values
-  std::vector<Element>convertToElement(std::vector<int>input) {
-    std::vector<Element> toReturn;
-
-    for (auto item : input) {
-      toReturn.push_back(Element(item));
-    }
-
-    return toReturn;
-  }
-
-  // convert a 2d vector of integers to Element with those values
-  std::vector<std::vector<Element> >convertToElement(
-    std::vector<std::vector<int> >input) {
-    std::vector<std::vector<Element> > toReturn;
-
-    for (auto each : input) {
-      std::vector<Element> newEach;
-
-      for (auto item : each) {
-        newEach.push_back(Element(item));
-      }
-
-      toReturn.push_back(newEach);
-    }
-
-    return toReturn;
-  }
-
 protected:
 
   std::vector<int>nums4 = testValues::nums4;
