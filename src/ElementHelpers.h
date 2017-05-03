@@ -9,10 +9,18 @@
 std::ostream & operator<<(std::ostream & os,
                           const Element& element);
 
-// forward declaration of comparison operator
+// forward declaration of comparison operators
 bool operator==(const Element& a,
                 const Element& b);
 bool operator!=(const Element& a,
+                const Element& b);
+bool operator<(const Element& a,
+               const Element& b);
+bool operator>(const Element& a,
+               const Element& b);
+bool operator<=(const Element& a,
+                const Element& b);
+bool operator>=(const Element& a,
                 const Element& b);
 
 // get string representation of the given operation

@@ -46,6 +46,50 @@ TEST_F(ElementHelpersTests, testComparisonOperatorNotEquals) {
   EXPECT_TRUE(element3 != element1);
 }
 
+TEST_F(ElementHelpersTests, testLessThanOperator) {
+  EXPECT_FALSE(element1 < element1);
+  EXPECT_TRUE(element1 < element2);
+  EXPECT_TRUE(element1 < element3);
+
+  EXPECT_FALSE(element2 < element2);
+  EXPECT_TRUE(element2 < element3);
+
+  EXPECT_FALSE(element3 < element3);
+}
+
+TEST_F(ElementHelpersTests, testGreaterThanOperator) {
+  EXPECT_FALSE(element1 > element1);
+  EXPECT_FALSE(element1 > element2);
+  EXPECT_FALSE(element1 > element3);
+
+  EXPECT_FALSE(element2 > element2);
+  EXPECT_FALSE(element2 > element3);
+
+  EXPECT_FALSE(element3 > element3);
+}
+
+TEST_F(ElementHelpersTests, testLessThanEqualToOperator) {
+  EXPECT_TRUE(element1 <= element1);
+  EXPECT_TRUE(element1 <= element2);
+  EXPECT_TRUE(element1 <= element3);
+
+  EXPECT_TRUE(element2 <= element2);
+  EXPECT_TRUE(element2 <= element3);
+
+  EXPECT_TRUE(element3 <= element3);
+}
+
+TEST_F(ElementHelpersTests, testGreaterThanEqualToOperator) {
+  EXPECT_TRUE(element1 >= element1);
+  EXPECT_FALSE(element1 >= element2);
+  EXPECT_FALSE(element1 >= element3);
+
+  EXPECT_TRUE(element2 >= element2);
+  EXPECT_FALSE(element2 >= element3);
+
+  EXPECT_TRUE(element3 >= element3);
+}
+
 TEST_F(ElementHelpersTests, testPrintOperator) {
   std::string expected1 = "0";
   std::string expected2 = "10";
