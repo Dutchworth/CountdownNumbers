@@ -83,7 +83,7 @@ TEST_F(StatsUtilsTests, testGetCombinations) {
 
 TEST_F(StatsUtilsTests, tetsGetPermutations) {
   std::vector<std::vector<int> > newPerms =
-    StatsUtils::getPermuations<int>(nums4);
+    StatsUtils::getPermutations<int>(nums4);
   EXPECT_EQ(perms, newPerms);
 }
 
@@ -163,6 +163,6 @@ TEST_F(StatsUtilsTests, testGetCombinationsWithRepetionElement) {
 
 TEST_F(StatsUtilsTests, tetsGetPermutationsElement) {
   std::vector<std::vector<Element> > newPerms =
-    StatsUtils::getPermuations<Element>(elements);
+    StatsUtils::getPermutations<Element>(elements);
   EXPECT_EQ(elementPerms, newPerms);
 }

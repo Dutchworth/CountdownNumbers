@@ -61,7 +61,7 @@ std::vector<std::vector<T> >getCombinationsWithRep(std::vector<T>set,
 }
 
 template<typename T>
-std::vector<std::vector<T> >getPermuations(std::vector<T>set) {
+std::vector<std::vector<T> >getPermutations(std::vector<T>set) {
   std::sort(set.begin(), set.end());
 
   std::vector<std::vector<T> > vect2d;
@@ -77,7 +77,7 @@ std::vector<std::vector<T> >getPermuations(std::vector<T>set) {
       auto setCopy = set;
       setCopy.erase(setCopy.begin() + i);
 
-      for (auto subPerm : getPermuations(setCopy)) {
+      for (auto subPerm : getPermutations(setCopy)) {
         subPerm.insert(subPerm.begin(), item);
         vect2d.push_back(subPerm);
       }
