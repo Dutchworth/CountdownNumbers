@@ -1,11 +1,15 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
-namespace Solver {
-bool                              solveRecursive(std::vector<int>numbers,
-                                                 int             target);
+#include "Element.h"
+#include <vector>
+#include <stack>
 
-std::vector<std::vector<Element> >possSolutions(std::vector<int>numbers);
+namespace Solver {
+// returns all the possible rpn equations for a given subSetSize of the given
+// numbers
+std::vector<std::stack<Element> >possSolutions(std::vector<int>numbers,
+                                               int             subSetSize);
 }
 
 #endif // ifndef SOLVER_H

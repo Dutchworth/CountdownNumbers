@@ -21,6 +21,7 @@ int                 evaluateStackRecursive(std::stack<Element>& stack);
 int         evaluateStack(std::stack<Element>stack);
 
 // returns whether the given stack of elements is a valid rpn stack
+bool        isValidStack(std::vector<Element>vect);
 bool        isValidStack(std::stack<Element>stack);
 
 // converts the given rpn stack to a string for printing
