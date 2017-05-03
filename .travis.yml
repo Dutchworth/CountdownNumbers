@@ -1,4 +1,5 @@
 language: cpp
+dist: trusty
 
 before_install:
   sudo apt-get -qq update
@@ -8,4 +9,8 @@ addons:
     packages:
       - cmake
 
-script: ./configure && cd build && make && make test
+script:
+  - ./configure
+  - cd build
+  - make
+  - make test
