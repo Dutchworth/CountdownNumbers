@@ -4,6 +4,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#include "ElementHelpers.h"
 
 namespace StatsUtils {
 template<typename T>

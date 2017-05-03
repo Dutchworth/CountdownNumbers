@@ -1,10 +1,41 @@
 #include "gtest/gtest.h"
-#include "StatsUtils.h"
 #include "StatsUtilsTestsValues.h"
+#include "StatsUtils.h"
+#include "Element.h"
 #include <cmath>
-#include <iostream>
 
 class StatsUtilsTests : public ::testing::Test {
+private:
+
+  // convert a vector of integers to Element with those values
+  std::vector<Element>convertToElement(std::vector<int>input) {
+    std::vector<Element> toReturn;
+
+    for (auto item : input) {
+      toReturn.push_back(Element(item));
+    }
+
+    return toReturn;
+  }
+
+  // convert a 2d vector of integers to Element with those values
+  std::vector<std::vector<Element> >convertToElement(
+    std::vector<std::vector<int> >input) {
+    std::vector<std::vector<Element> > toReturn;
+
+    for (auto each : input) {
+      std::vector<Element> newEach;
+
+      for (auto item : each) {
+        newEach.push_back(Element(item));
+      }
+
+      toReturn.push_back(newEach);
+    }
+
+    return toReturn;
+  }
+
 protected:
 
   std::vector<int>nums4 = testValues::nums4;
@@ -20,6 +51,26 @@ protected:
   std::vector<std::vector<int> >combsReps4to2 = testValues::combsReps4to2;
   std::vector<std::vector<int> >combsReps4to3 = testValues::combsReps4to3;
   std::vector<std::vector<int> >combsReps4to4 = testValues::combsReps4to4;
+
+  // expected values for tests using element class
+
+  std::vector<Element>elements = convertToElement(nums4);
+
+  std::vector<std::vector<Element> >elementsCombs1 = convertToElement(combs4to1);
+  std::vector<std::vector<Element> >elementsCombs2 = convertToElement(combs4to2);
+  std::vector<std::vector<Element> >elementsCombs3 = convertToElement(combs4to3);
+  std::vector<std::vector<Element> >elementsCombs4 = convertToElement(combs4to4);
+
+  std::vector<std::vector<Element> >elementPerms = convertToElement(perms);
+
+  std::vector<std::vector<Element> >elementsCombs1Rep = convertToElement(
+    combsReps4to1);
+  std::vector<std::vector<Element> >elementsCombs2Rep = convertToElement(
+    combsReps4to2);
+  std::vector<std::vector<Element> >elementsCombs3Rep = convertToElement(
+    combsReps4to3);
+  std::vector<std::vector<Element> >elementsCombs4Rep = convertToElement(
+    combsReps4to4);
 
   virtual void SetUp()    {
     // do nothing, values already setup
@@ -67,23 +118,81 @@ TEST_F(StatsUtilsTests, tetsGetPermutations) {
 }
 
 TEST_F(StatsUtilsTests, testGetCombinationsWithRepetion) {
-  std::vector<std::vector<int> > new4C1 = StatsUtils::getCombinationsWithRep(
+  std::vector<std::vector<int> > new4C1 = StatsUtils::getCombinationsWithRep<int>(
     nums4,
     1);
   EXPECT_EQ(combsReps4to1, new4C1);
 
-  std::vector<std::vector<int> > new4C2 = StatsUtils::getCombinationsWithRep(
+  std::vector<std::vector<int> > new4C2 = StatsUtils::getCombinationsWithRep<int>(
     nums4,
     2);
   EXPECT_EQ(combsReps4to2, new4C2);
 
-  std::vector<std::vector<int> > new4C3 = StatsUtils::getCombinationsWithRep(
+  std::vector<std::vector<int> > new4C3 = StatsUtils::getCombinationsWithRep<int>(
     nums4,
     3);
   EXPECT_EQ(combsReps4to3, new4C3);
 
-  std::vector<std::vector<int> > new4C4 = StatsUtils::getCombinationsWithRep(
+  std::vector<std::vector<int> > new4C4 = StatsUtils::getCombinationsWithRep<int>(
     nums4,
     4);
   EXPECT_EQ(combsReps4to4, new4C4);
+}
+
+TEST_F(StatsUtilsTests, testGetCombinationsElement) {
+  std::vector<std::vector<Element> > newElements1 =
+    StatsUtils::getCombinations<Element>(
+      elements,
+      1);
+  EXPECT_EQ(elementsCombs1, newElements1);
+
+  std::vector<std::vector<Element> > newElements2 =
+    StatsUtils::getCombinations<Element>(
+      elements,
+      2);
+  EXPECT_EQ(elementsCombs2, newElements2);
+
+  std::vector<std::vector<Element> > newElements3 =
+    StatsUtils::getCombinations<Element>(
+      elements,
+      3);
+  EXPECT_EQ(elementsCombs3, newElements3);
+
+  std::vector<std::vector<Element> > newElements4 =
+    StatsUtils::getCombinations<Element>(
+      elements,
+      4);
+  EXPECT_EQ(elementsCombs4, newElements4);
+}
+
+TEST_F(StatsUtilsTests, testGetCombinationsWithRepetionElement) {
+  std::vector<std::vector<Element> > newElements1 =
+    StatsUtils::getCombinationsWithRep<Element>(
+      elements,
+      1);
+  EXPECT_EQ(elementsCombs1Rep, newElements1);
+
+  std::vector<std::vector<Element> > newElements2 =
+    StatsUtils::getCombinationsWithRep<Element>(
+      elements,
+      2);
+  EXPECT_EQ(elementsCombs2Rep, newElements2);
+
+  std::vector<std::vector<Element> > newElements3 =
+    StatsUtils::getCombinationsWithRep<Element>(
+      elements,
+      3);
+  EXPECT_EQ(elementsCombs3Rep, newElements3);
+
+  std::vector<std::vector<Element> > newElements4 =
+    StatsUtils::getCombinationsWithRep<Element>(
+      elements,
+      4);
+  EXPECT_EQ(elementsCombs4Rep, newElements4);
+}
+
+TEST_F(StatsUtilsTests, tetsGetPermutationsElement) {
+  std::vector<std::vector<Element> > newPerms =
+    StatsUtils::getPermuations<Element>(elements);
+  EXPECT_EQ(elementPerms, newPerms);
 }
