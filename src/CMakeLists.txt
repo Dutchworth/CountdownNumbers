@@ -8,6 +8,7 @@ set (MAIN_SOURCES
   RpnUtils.cpp
   StatsUtils.cpp
   Solver.cpp
+  ArgUtils.cpp
 )
 
 add_library(sourceLib ${MAIN_SOURCES})

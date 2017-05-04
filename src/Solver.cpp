@@ -4,7 +4,6 @@
 #include "StatsUtils.h"
 #include "RpnUtils.h"
 #include <vector>
-#include <iostream>
 #include <algorithm>
 
 namespace Solver {
