@@ -4,34 +4,46 @@
 #include "StatsUtils.h"
 #include "RpnUtils.h"
 #include <vector>
+#include <iostream>
+#include <algorithm>
 
 namespace Solver {
-std::vector<std::stack<Element> >possSolutions(std::vector<int>numbers,
-                                               int             subSetSize) {
-  int numGiven = numbers.size();
-  int numOps   = subSetSize - 1;
-
+bool solve(std::vector<int>numbers, int target, std::vector<Element>& solution) {
   std::vector<Element> possibleOps { { Element(PLUS), Element(MINUS), Element(MULTIPLY), Element(DIVIDE) } };
 
-  std::vector<Element> elements                  = convertToElement(numbers);
-  std::vector<std::vector<Element> > combsOfNums = StatsUtils::getCombinations(elements, subSetSize);
-  std::vector<std::vector<Element> > operations  = StatsUtils::getCombinationsWithRep(possibleOps, numOps);
+  std::vector<Element> elements = convertToElement(numbers);
 
-  std::vector<std::stack<Element> > toReturn;
+  for (int i = 2; i <= numbers.size(); ++i) {
+    int numOps = i - 1;
 
-  for (auto eachNumComb : combsOfNums) {
-    for (auto eachOpComb : operations) {
-      std::vector<Element> newComb = eachNumComb;
-      newComb.insert(newComb.end(), eachOpComb.begin(), eachOpComb.end());
+    std::vector<std::vector<Element> > combsOfNums = StatsUtils::getCombinations(elements, i);
+    std::vector<std::vector<Element> > operations  = StatsUtils::getCombinationsWithRep(possibleOps, numOps);
 
-      for (auto eachPerm : StatsUtils::getPermutations(newComb)) {
-        if (RpnUtils::isValidStack(eachPerm)) {
-          toReturn.push_back(RpnUtils::convertToStack(eachPerm));
-        }
+    for (auto eachNumComb : combsOfNums) {
+      for (auto eachOpComb : operations) {
+        std::vector<Element> newComb = eachNumComb;
+        newComb.insert(newComb.end(), eachOpComb.begin(), eachOpComb.end());
+
+        do {
+          if (RpnUtils::isValidStack(newComb)) {
+            std::stack<Element> newStack = RpnUtils::convertToStack(newComb);
+
+            // for (auto each : newComb) {
+            //   std::cout << each << ' ';
+            // }
+            // std::cout << '\n';
+
+            if (RpnUtils::evaluateStack(newStack) == target) {
+              solution = newComb;
+
+              return true;
+            }
+          }
+        } while (std::next_permutation(newComb.begin(), newComb.end()));
+
+        for (auto eachPerm : StatsUtils::getPermutations(newComb)) {}
       }
     }
   }
-
-  return toReturn;
 }
 }

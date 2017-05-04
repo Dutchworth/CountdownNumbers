@@ -6,10 +6,11 @@
 #include <stack>
 
 namespace Solver {
-// returns all the possible rpn equations for a given subSetSize of the given
-// numbers
-std::vector<std::stack<Element> >possSolutions(std::vector<int>numbers,
-                                               int             subSetSize);
+// returns true if a solution is possible for the given numbers and target
+// the found solution is returned by the input by ref: solution
+bool solve(std::vector<int>      numbers,
+           int                   target,
+           std::vector<Element>& solution);
 }
 
 #endif // ifndef SOLVER_H
