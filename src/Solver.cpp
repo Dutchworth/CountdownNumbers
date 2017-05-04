@@ -28,11 +28,6 @@ bool solve(std::vector<int>numbers, int target, std::vector<Element>& solution) 
           if (RpnUtils::isValidStack(newComb)) {
             std::stack<Element> newStack = RpnUtils::convertToStack(newComb);
 
-            // for (auto each : newComb) {
-            //   std::cout << each << ' ';
-            // }
-            // std::cout << '\n';
-
             if (RpnUtils::evaluateStack(newStack) == target) {
               solution = newComb;
 
@@ -40,10 +35,10 @@ bool solve(std::vector<int>numbers, int target, std::vector<Element>& solution) 
             }
           }
         } while (std::next_permutation(newComb.begin(), newComb.end()));
-
-        for (auto eachPerm : StatsUtils::getPermutations(newComb)) {}
       }
     }
   }
+
+  return false;
 }
 }

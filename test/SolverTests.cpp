@@ -32,13 +32,14 @@ protected:
 //   EXPECT_EQ(eqs2, possSols);
 // }
 
-TEST_F(SolverTests, testSolveSimple) {
-  std::vector<Element> expected { { Element(5), Element(4), Element(MINUS) } };
-  std::vector<Element> actual;
-
-  EXPECT_TRUE(Solver::solve(nums2, 1, actual));
-  EXPECT_EQ(expected, actual);
-}
+// TEST_F(SolverTests, testSolveSimple) {
+//   std::vector<Element> expected { { Element(5), Element(4), Element(MINUS) }
+// };
+//   std::vector<Element> actual;
+//
+//   EXPECT_TRUE(Solver::solve(nums2, 1, actual));
+//   EXPECT_EQ(expected, actual);
+// }
 
 TEST_F(SolverTests, testSolveHard) {
   std::vector<int> input { { 100, 75, 4, 5, 2, 1 } };
