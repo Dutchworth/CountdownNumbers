@@ -8,6 +8,7 @@ set(TEST_SOURCES
   ElementHelpersTests.cpp
   RpnUtilsTests.cpp
   StatsUtilsTests.cpp
+  SolverTests.cpp
 )
 
 include_directories(${SourceSubdir_SOURCE_DIR})

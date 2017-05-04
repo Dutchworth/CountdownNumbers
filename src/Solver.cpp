@@ -21,9 +21,10 @@ std::vector<std::stack<Element> >possSolutions(std::vector<int>numbers,
 
   for (auto eachNumComb : combsOfNums) {
     for (auto eachOpComb : operations) {
-      eachNumComb.insert(eachNumComb.end(), eachOpComb.begin(), eachOpComb.end());
+      std::vector<Element> newComb = eachNumComb;
+      newComb.insert(newComb.end(), eachOpComb.begin(), eachOpComb.end());
 
-      for (auto eachPerm : StatsUtils::getPermutations(eachNumComb)) {
+      for (auto eachPerm : StatsUtils::getPermutations(newComb)) {
         if (RpnUtils::isValidStack(eachPerm)) {
           toReturn.push_back(RpnUtils::convertToStack(eachPerm));
         }
