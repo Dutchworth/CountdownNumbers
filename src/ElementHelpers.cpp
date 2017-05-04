@@ -76,7 +76,9 @@ int performOperation(const int a, const Operation operation, const int b) {
   case DIVIDE:
 
     // only return divide operation if the result is an integer
-    if (a % b == 0) {
+    if ((a == 0) || (b == 0)) {
+      return 0;
+    } else if (a % b == 0) {
       return a / b;
     } else {
       return 0;
