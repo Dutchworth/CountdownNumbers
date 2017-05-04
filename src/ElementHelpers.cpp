@@ -74,7 +74,13 @@ int performOperation(const int a, const Operation operation, const int b) {
     return a * b;
 
   case DIVIDE:
-    return a / b;
+
+    // only return divide operation if the result is an integer
+    if (a % b == 0) {
+      return a / b;
+    } else {
+      return 0;
+    }
 
   default:
     return 0;

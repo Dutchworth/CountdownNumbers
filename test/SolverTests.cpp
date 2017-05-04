@@ -16,9 +16,7 @@ protected:
 
   virtual void SetUp() {}
 
-  virtual void TearDown() {
-    eqs.clear();
-  }
+  virtual void TearDown() {}
 };
 
 TEST_F(SolverTests, testPossSolutions) {
