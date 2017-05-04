@@ -77,26 +77,6 @@ bool RpnUtils::isValidStack(std::vector<Element>vect) {
          && !vect.at(vect.size() - 1).isNumber();
 }
 
-// bool RpnUtils::isValidStack(std::vector<Element>vect) {
-//   int nums = 0;
-//   int ops  = 0;
-//
-//   for (auto each : vect) {
-//     if (each.isNumber()) {
-//       ++nums;
-//     } else {
-//       ++ops;
-//     }
-//   }
-//
-// return vect.size() > 2
-//        && nums == ops + 1
-//        && vect.at(0).isNumber()
-//        && vect.at(1).isNumber()
-//        && !vect.at(vect.size() - 1).isNumber();
-
-// }
-
 bool RpnUtils::isValidStack(std::stack<Element>stack) {
   std::vector<Element> vect = convertToVect(stack);
   return isValidStack(vect);
