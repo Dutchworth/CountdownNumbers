@@ -45,7 +45,7 @@ protected:
     argv3[1] = (char *)"adsfasdf";
     argv3[2] = (char *)"asdfasdf";
     argv3[3] = (char *)"asdfasdf";
-    argv3[4] = (char *)"asdfasdf";
+    argv3[4] = (char *)"help";
     argv3[5] = (char *)"asdfasdf";
     argv3[6] = (char *)"asdfasdf";
     argv3[7] = (char *)"asdfasdf";
@@ -95,4 +95,8 @@ TEST_F(ArgUtilsTests, testCorrectInput) {
   EXPECT_TRUE(ArgUtils::correctInput(argc1, argv1));
   EXPECT_FALSE(ArgUtils::correctInput(argc2, argv2));
   EXPECT_FALSE(ArgUtils::correctInput(argc1, argv3));
+}
+
+TEST_F(ArgUtilsTests, testHelpRequested) {
+  EXPECT_TRUE(ArgUtils::helpRequested(argc1, argv3));
 }

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <ostream>
 
 namespace ArgUtils {
 // gets a vector of strings from the given program input
@@ -19,5 +20,10 @@ int             getTarget(int    argc,
 
 bool            correctInput(int    argc,
                              char **argv);
+
+bool            helpRequested(int    argc,
+                              char **argv);
+
+void            printHelp(std::ostream& out);
 }
 #endif // ifndef ARGUTILS_H
