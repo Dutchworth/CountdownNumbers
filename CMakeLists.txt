@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
-
 project(CountdownNumbers)
+
+# Setting default folders
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -42,4 +46,4 @@ add_executable(CountdownNumbers ${SourceSubdir_SOURCE_DIR}/main.cpp)
 target_link_libraries(CountdownNumbers sourceLib)
 
 enable_testing()
-add_test(NAME unitTests COMMAND runUnitTests)
+add_test(NAME unitTests COMMAND CountdownNumbers-runUnitTests)
