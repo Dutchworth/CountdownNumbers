@@ -36,6 +36,5 @@ install:
 
 script:
   - ./configure
-  - cd build
   - make
   - make test
