@@ -1,25 +1,17 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include <string>
 #include <ostream>
+#include <string>
 
-enum Operation {
-  PLUS,
-  MINUS,
-  MULTIPLY,
-  DIVIDE,
-  NUMBER
-};
+enum Operation { PLUS, MINUS, MULTIPLY, DIVIDE, NUMBER };
 
 class Element {
-private:
-
+ private:
   int m_value;
   Operation m_operation;
 
-public:
-
+ public:
   // Constructors
   Element();
   Element(const int value);
@@ -30,19 +22,19 @@ public:
 
   // Copy Constructor and assignment operator
   Element(const Element& other);
-  Element   & operator=(const Element& other);
+  Element& operator=(const Element& other);
 
   // gets the element's value
-  int         getValue() const;
+  int getValue() const;
 
   // gets the element's held operation
-  Operation   getOperation() const;
+  Operation getOperation() const;
 
   // returns whether this is a number type element;
-  bool        isNumber() const;
+  bool isNumber() const;
 
   // gets string representation of element
   std::string getString() const;
 };
 
-#endif // ifndef ELEMENT_H
+#endif  // ifndef ELEMENT_H

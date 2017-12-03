@@ -1,10 +1,10 @@
+#include <iostream>
+#include <string>
+#include <vector>
 #include "ArgUtils.h"
-#include "Solver.h"
 #include "Element.h"
 #include "ElementHelpers.h"
-#include <iostream>
-#include <vector>
-#include <string>
+#include "Solver.h"
 
 int main(int argc, char **argv) {
   if (ArgUtils::helpRequested(argc, argv)) {
@@ -14,7 +14,6 @@ int main(int argc, char **argv) {
 
   std::cout << "Countdown Numbers calculator\n";
   std::cout << " ========== \n";
-
 
   if (ArgUtils::correctInput(argc, argv)) {
     std::cout << "calculating with:\nnumbers: ";
@@ -42,8 +41,8 @@ int main(int argc, char **argv) {
       std::cout << " = " << target << '\n';
     }
   } else {
-    std::cout <<
-      "Bad input. Please try again or use help command for more info.\n";
+    std::cout
+        << "Bad input. Please try again or use help command for more info.\n";
     return 1;
   }
 

@@ -1,14 +1,13 @@
-#include "gtest/gtest.h"
 #include "Element.h"
-#include "ElementHelpers.h"
 #include <string>
+#include "ElementHelpers.h"
+#include "gtest/gtest.h"
 
 class ElementTests : public ::testing::Test {
-protected:
-
+ protected:
   Element element1, element2, element3;
 
-  virtual void SetUp()    {
+  virtual void SetUp() {
     element1 = Element();
     element2 = Element(10);
     element3 = Element(PLUS);
@@ -22,7 +21,7 @@ TEST_F(ElementTests, testEmptyConstructor) {
 
   EXPECT_EQ(newElement1, element1);
   EXPECT_TRUE(element1.isNumber());
-  EXPECT_EQ(0,      element1.getValue());
+  EXPECT_EQ(0, element1.getValue());
   EXPECT_EQ(NUMBER, element1.getOperation());
 }
 
@@ -31,7 +30,7 @@ TEST_F(ElementTests, testIntConstructor) {
 
   EXPECT_EQ(newElement2, element2);
   EXPECT_TRUE(element2.isNumber());
-  EXPECT_EQ(10,     element2.getValue());
+  EXPECT_EQ(10, element2.getValue());
   EXPECT_EQ(NUMBER, element2.getOperation());
 }
 
@@ -40,7 +39,7 @@ TEST_F(ElementTests, testOperationConstructor) {
 
   EXPECT_EQ(newElement3, element3);
   EXPECT_FALSE(element3.isNumber());
-  EXPECT_EQ(0,    element3.getValue());
+  EXPECT_EQ(0, element3.getValue());
   EXPECT_EQ(PLUS, element3.getOperation());
 }
 
@@ -65,15 +64,15 @@ TEST_F(ElementTests, testAssignmentOperator) {
 }
 
 TEST_F(ElementTests, testGetValue) {
-  EXPECT_EQ(0,  element1.getValue());
+  EXPECT_EQ(0, element1.getValue());
   EXPECT_EQ(10, element2.getValue());
-  EXPECT_EQ(0,  element3.getValue());
+  EXPECT_EQ(0, element3.getValue());
 }
 
 TEST_F(ElementTests, testGetOperation) {
   EXPECT_EQ(NUMBER, element1.getOperation());
   EXPECT_EQ(NUMBER, element2.getOperation());
-  EXPECT_EQ(PLUS,   element3.getOperation());
+  EXPECT_EQ(PLUS, element3.getOperation());
 }
 
 TEST_F(ElementTests, testIsNumber) {

@@ -8,4 +8,4 @@ long long factorial(long long value) {
     return value * factorial(value - 1);
   }
 }
-}
+}  // namespace StatsUtils

@@ -1,11 +1,11 @@
 #include "ArgUtils.h"
-#include <string>
-#include <vector>
-#include <stdexcept>
 #include <algorithm>
 #include <ostream>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
-std::vector<std::string>ArgUtils::getArgs(int argc, char **argv) {
+std::vector<std::string> ArgUtils::getArgs(int argc, char **argv) {
   std::vector<std::string> args;
 
   for (int i = 0; i < argc; ++i) {
@@ -15,7 +15,7 @@ std::vector<std::string>ArgUtils::getArgs(int argc, char **argv) {
   return args;
 }
 
-std::vector<int>ArgUtils::getNumbers(int argc, char **argv) {
+std::vector<int> ArgUtils::getNumbers(int argc, char **argv) {
   std::vector<std::string> args = getArgs(argc, argv);
 
   std::vector<int> nums;
@@ -62,10 +62,12 @@ bool ArgUtils::correctInput(int argc, char **argv) {
 
 bool ArgUtils::helpRequested(int argc, char **argv) {
   std::vector<std::string> args = getArgs(argc, argv);
-  std::vector<std::string> helpCommands { { "help", "h", "--help", "--h", "-help", "-h" } };
+  std::vector<std::string> helpCommands{
+      {"help", "h", "--help", "--h", "-help", "-h"}};
 
   for (auto each : args) {
-    if (std::find(helpCommands.begin(), helpCommands.end(), each) != helpCommands.end()) {
+    if (std::find(helpCommands.begin(), helpCommands.end(), each) !=
+        helpCommands.end()) {
       return true;
     }
   }
@@ -73,13 +75,17 @@ bool ArgUtils::helpRequested(int argc, char **argv) {
   return false;
 }
 
-void ArgUtils::printHelp(std::ostream& out) {
+void ArgUtils::printHelp(std::ostream &out) {
   out << "Countdown Numbers calculator\n";
   out << " ========== \n";
-  out << "This programs takes input of the 6 numbers to be used to create the solution.\n";
-  out << "These should then be followed by the target number that the solution should reach.\n";
+  out << "This programs takes input of the 6 numbers to be used to create the "
+         "solution.\n";
+  out << "These should then be followed by the target number that the solution "
+         "should reach.\n";
   out << " ========== \n";
-  out << "The program uses a brute force method of calculating all possible solutions from the given numbers.\n";
-  out << "The first solution that returns the given target is output in Reverse Polish Notation (conversion to infix coming soon).\n";
+  out << "The program uses a brute force method of calculating all possible "
+         "solutions from the given numbers.\n";
+  out << "The first solution that returns the given target is output in "
+         "Reverse Polish Notation (conversion to infix coming soon).\n";
   out << " ========== \n";
 }

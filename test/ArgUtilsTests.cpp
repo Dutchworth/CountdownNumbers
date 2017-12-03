@@ -1,33 +1,24 @@
-#include "gtest/gtest.h"
 #include "ArgUtils.h"
 #include <string>
 #include <vector>
+#include "gtest/gtest.h"
 
 class ArgUtilsTests : public ::testing::Test {
-protected:
-
-  int argc1    = 8;
+ protected:
+  int argc1 = 8;
   char **argv1 = new char *[argc1];
 
-  std::vector<std::string>expected1 { { "/path/to/file",
-                                        "10",
-                                        "20",
-                                        "25",
-                                        "100",
-                                        "2",
-                                        "7",
-                                        "564" } };
+  std::vector<std::string> expected1{
+      {"/path/to/file", "10", "20", "25", "100", "2", "7", "564"}};
 
-  int argc2    = 3;
+  int argc2 = 3;
   char **argv2 = new char *[argc2];
 
-  std::vector<std::string>expected2 { { "/path/to/file",
-                                        "10",
-                                        "20" } };
+  std::vector<std::string> expected2{{"/path/to/file", "10", "20"}};
 
   char **argv3 = new char *[argc1];
 
-  virtual void SetUp()    {
+  virtual void SetUp() {
     argv1[0] = (char *)"/path/to/file";
     argv1[1] = (char *)"10";
     argv1[2] = (char *)"20";
@@ -51,9 +42,7 @@ protected:
     argv3[7] = (char *)"asdfasdf";
   }
 
-  virtual void TearDown() {
-    delete[] argv1;
-  }
+  virtual void TearDown() { delete[] argv1; }
 };
 
 TEST_F(ArgUtilsTests, testGetArgs) {
@@ -65,7 +54,7 @@ TEST_F(ArgUtilsTests, testGetArgs) {
 }
 
 TEST_F(ArgUtilsTests, testGetNumbersHappy) {
-  std::vector<int> expected { { 10, 20, 25, 100, 2, 7 } };
+  std::vector<int> expected{{10, 20, 25, 100, 2, 7}};
   std::vector<int> actual = ArgUtils::getNumbers(argc1, argv1);
 
   EXPECT_EQ(expected, actual);
@@ -79,14 +68,14 @@ TEST_F(ArgUtilsTests, testGetNumbersUnHappy) {
 
 TEST_F(ArgUtilsTests, testGetTargetHappy) {
   int expected = 564;
-  int actual   = ArgUtils::getTarget(argc1, argv1);
+  int actual = ArgUtils::getTarget(argc1, argv1);
 
   EXPECT_EQ(expected, actual);
 }
 
 TEST_F(ArgUtilsTests, testGetTargetUnHappy) {
   int expected = 1;
-  int actual   = ArgUtils::getTarget(argc1, argv3);
+  int actual = ArgUtils::getTarget(argc1, argv3);
 
   EXPECT_EQ(expected, actual);
 }

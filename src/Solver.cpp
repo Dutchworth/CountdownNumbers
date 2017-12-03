@@ -1,22 +1,26 @@
 #include "Solver.h"
+#include <algorithm>
+#include <vector>
 #include "Element.h"
 #include "ElementHelpers.h"
-#include "StatsUtils.h"
 #include "RpnUtils.h"
-#include <vector>
-#include <algorithm>
+#include "StatsUtils.h"
 
 namespace Solver {
-bool solve(std::vector<int>numbers, int target, std::vector<Element>& solution) {
-  std::vector<Element> possibleOps { { Element(PLUS), Element(MINUS), Element(MULTIPLY), Element(DIVIDE) } };
+bool solve(std::vector<int> numbers, int target,
+           std::vector<Element>& solution) {
+  std::vector<Element> possibleOps{
+      {Element(PLUS), Element(MINUS), Element(MULTIPLY), Element(DIVIDE)}};
 
   std::vector<Element> elements = convertToElement(numbers);
 
   for (int i = 2; i <= numbers.size(); ++i) {
     int numOps = i - 1;
 
-    std::vector<std::vector<Element> > combsOfNums = StatsUtils::getCombinations(elements, i);
-    std::vector<std::vector<Element> > operations  = StatsUtils::getCombinationsWithRep(possibleOps, numOps);
+    std::vector<std::vector<Element> > combsOfNums =
+        StatsUtils::getCombinations(elements, i);
+    std::vector<std::vector<Element> > operations =
+        StatsUtils::getCombinationsWithRep(possibleOps, numOps);
 
     for (auto eachNumComb : combsOfNums) {
       for (auto eachOpComb : operations) {

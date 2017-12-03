@@ -1,11 +1,11 @@
 #include "RpnUtils.h"
-#include "ElementHelpers.h"
-#include "Element.h"
-#include <vector>
 #include <algorithm>
 #include <string>
+#include <vector>
+#include "Element.h"
+#include "ElementHelpers.h"
 
-std::vector<Element>RpnUtils::convertToVect(std::stack<Element>stack) {
+std::vector<Element> RpnUtils::convertToVect(std::stack<Element> stack) {
   std::vector<Element> vect;
 
   int size = stack.size();
@@ -20,7 +20,7 @@ std::vector<Element>RpnUtils::convertToVect(std::stack<Element>stack) {
   return vect;
 }
 
-std::stack<Element>RpnUtils::convertToStack(std::vector<Element>vect) {
+std::stack<Element> RpnUtils::convertToStack(std::vector<Element> vect) {
   std::stack<Element> stack;
 
   for (auto each : vect) {
@@ -45,7 +45,7 @@ int RpnUtils::evaluateStackRecursive(std::stack<Element>& stack) {
   }
 }
 
-int RpnUtils::evaluateStack(std::stack<Element>stack) {
+int RpnUtils::evaluateStack(std::stack<Element> stack) {
   if (isValidStack(stack)) {
     return evaluateStackRecursive(stack);
   } else {
@@ -53,7 +53,7 @@ int RpnUtils::evaluateStack(std::stack<Element>stack) {
   }
 }
 
-bool RpnUtils::isValidStack(std::vector<Element>vect) {
+bool RpnUtils::isValidStack(std::vector<Element> vect) {
   int counter = 0;
 
   for (auto each : vect) {
@@ -70,21 +70,18 @@ bool RpnUtils::isValidStack(std::vector<Element>vect) {
     }
   }
 
-  return counter == 1
-         && vect.size()
-         && vect.at(0).isNumber()
-         && vect.at(1).isNumber()
-         && !vect.at(vect.size() - 1).isNumber();
+  return counter == 1 && vect.size() && vect.at(0).isNumber() &&
+         vect.at(1).isNumber() && !vect.at(vect.size() - 1).isNumber();
 }
 
-bool RpnUtils::isValidStack(std::stack<Element>stack) {
+bool RpnUtils::isValidStack(std::stack<Element> stack) {
   std::vector<Element> vect = convertToVect(stack);
   return isValidStack(vect);
 }
 
-std::string RpnUtils::to_string(std::stack<Element>stack) {
+std::string RpnUtils::to_string(std::stack<Element> stack) {
   std::vector<Element> vect = convertToVect(stack);
-  std::string toReturn      = "";
+  std::string toReturn = "";
 
   for (auto each : vect) {
     toReturn += each.getString();

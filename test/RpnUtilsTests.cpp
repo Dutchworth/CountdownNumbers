@@ -1,11 +1,10 @@
-#include "gtest/gtest.h"
 #include "RpnUtils.h"
-#include "Element.h"
 #include <stack>
+#include "Element.h"
+#include "gtest/gtest.h"
 
 class RpnUtilsTests : public ::testing::Test {
-private:
-
+ private:
   void emptyStack(std::stack<Element>& stack) {
     int size = stack.size();
 
@@ -14,9 +13,8 @@ private:
     }
   }
 
-protected:
-
-  std::stack<Element>valid1, valid2, invalid1, invalid2;
+ protected:
+  std::stack<Element> valid1, valid2, invalid1, invalid2;
   int val1 = 20;
   int val2 = 14;
 
@@ -55,19 +53,19 @@ TEST_F(RpnUtilsTests, testIsValidStack) {
 
 TEST_F(RpnUtilsTests, testToString) {
   std::string expected1 = "54*";
-  std::string actual1   = RpnUtils::to_string(valid1);
+  std::string actual1 = RpnUtils::to_string(valid1);
   EXPECT_EQ(expected1, actual1);
 
   std::string expected2 = "512+4*+3-";
-  std::string actual2   = RpnUtils::to_string(valid2);
+  std::string actual2 = RpnUtils::to_string(valid2);
   EXPECT_EQ(expected2, actual2);
 
   std::string expected3 = "55";
-  std::string actual3   = RpnUtils::to_string(invalid1);
+  std::string actual3 = RpnUtils::to_string(invalid1);
   EXPECT_EQ(expected3, actual3);
 
   std::string expected4 = "";
-  std::string actual4   = RpnUtils::to_string(invalid2);
+  std::string actual4 = RpnUtils::to_string(invalid2);
   EXPECT_EQ(expected4, actual4);
 }
 
@@ -75,6 +73,6 @@ TEST_F(RpnUtilsTests, testEvaluateStack) {
   EXPECT_EQ(val1, RpnUtils::evaluateStack(valid1));
   EXPECT_EQ(val2, RpnUtils::evaluateStack(valid2));
 
-  EXPECT_EQ(0,    RpnUtils::evaluateStack(invalid1));
-  EXPECT_EQ(0,    RpnUtils::evaluateStack(invalid2));
+  EXPECT_EQ(0, RpnUtils::evaluateStack(invalid1));
+  EXPECT_EQ(0, RpnUtils::evaluateStack(invalid2));
 }

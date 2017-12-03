@@ -1,22 +1,22 @@
 #ifndef STATSUTILS_TCC
 #define STATSUTILS_TCC
 
-#include <vector>
-#include <set>
 #include <algorithm>
+#include <set>
+#include <vector>
 #include "ElementHelpers.h"
 
 namespace StatsUtils {
-template<typename T>
-std::vector<std::vector<T> >getCombinations(std::vector<T>set,
-                                            int           subSetSize) {
+template <typename T>
+std::vector<std::vector<T> > getCombinations(std::vector<T> set,
+                                             int subSetSize) {
   std::sort(set.begin(), set.end());
 
   std::vector<std::vector<T> > vect2d;
 
   if (subSetSize <= 1) {
     for (auto each : set) {
-      vect2d.push_back(std::vector<T>{ { each } });
+      vect2d.push_back(std::vector<T>{{each}});
     }
   } else {
     auto setCopy = set;
@@ -36,14 +36,14 @@ std::vector<std::vector<T> >getCombinations(std::vector<T>set,
   return vect2d;
 }
 
-template<typename T>
-std::vector<std::vector<T> >getCombinationsWithRep(std::vector<T>set,
-                                                   int           subSetSize) {
+template <typename T>
+std::vector<std::vector<T> > getCombinationsWithRep(std::vector<T> set,
+                                                    int subSetSize) {
   std::set<std::vector<T> > set2d;
 
   if (subSetSize <= 1) {
     for (auto each : set) {
-      set2d.insert(std::vector<T>{ { each } });
+      set2d.insert(std::vector<T>{{each}});
     }
   } else {
     for (auto item : set) {
@@ -60,15 +60,15 @@ std::vector<std::vector<T> >getCombinationsWithRep(std::vector<T>set,
   return vect2d;
 }
 
-template<typename T>
-std::vector<std::vector<T> >getPermutations(std::vector<T>set) {
+template <typename T>
+std::vector<std::vector<T> > getPermutations(std::vector<T> set) {
   std::sort(set.begin(), set.end());
 
   std::vector<std::vector<T> > vect2d;
 
   if (set.size() <= 1) {
     for (auto each : set) {
-      vect2d.push_back(std::vector<T>{ { each } });
+      vect2d.push_back(std::vector<T>{{each}});
     }
   } else {
     for (int i = 0; i < set.size(); ++i) {
@@ -88,4 +88,4 @@ std::vector<std::vector<T> >getPermutations(std::vector<T>set) {
 }
 }
 
-#endif // ifndef STATSUTILS_TCC
+#endif  // ifndef STATSUTILS_TCC
